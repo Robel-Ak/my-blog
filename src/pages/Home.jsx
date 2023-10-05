@@ -36,12 +36,12 @@ const Home = (isAuth) => {
                 <div key={post.id} className="card mb-4 shadow shadow-sm">
                                     
                     <div className="card-body">
-                    { isAuth && post.author.id === auth.currentUser.uid ?
+                    { isAuth && post.author.id === auth?.currentUser?.uid &&
                         <div className="d-flex justify-content-end">
                             <button className='btn btn-danger my-3 mx-3' onClick={() => {deletePost(post.id)}}>
                                 Delete Post
                             </button>
-                        </div>   : <div></div>
+                        </div>  
                     }
                         <h5 className="card-title mb-3 fw-bold">{post.title}</h5>
                         <p className="card-title mb-3">{post.postTitle}</p>
