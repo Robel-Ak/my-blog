@@ -12,7 +12,7 @@ const Home = (isAuth) => {
     const getPosts = async() =>{
         setLoading(false);
         const data = await getDocs(postsCollectionRef);
-        setPostLists(data.docs.map( (doc) => ({...doc.data(), id:data.id})));
+        setPostLists(data.docs.map( (doc) => ({...doc.data(), id:doc.id})));
         setLoading(false);
     }
 
@@ -36,7 +36,7 @@ const Home = (isAuth) => {
                 <div key={post.id} className="card mb-4 shadow shadow-sm">
                                     
                     <div className="card-body">
-                    { isAuth && post.author.id === auth?.currentUser?.uid &&
+                    { isAuth && post.author.id === auth.currentUser?.uid &&
                         <div className="d-flex justify-content-end">
                             <button className='btn btn-danger my-3 mx-3' onClick={() => {deletePost(post.id)}}>
                                 Delete Post
@@ -45,7 +45,7 @@ const Home = (isAuth) => {
                     }
                         <h5 className="card-title mb-3 fw-bold">{post.title}</h5>
                         <p className="card-title mb-3">{post.postTitle}</p>
-                        <p className='badge bg-dark'>{post.author.name}</p>
+                        <span className='badge bg-dark'>{post.author.name}</span>
                     </div> 
                     
                 </div>
